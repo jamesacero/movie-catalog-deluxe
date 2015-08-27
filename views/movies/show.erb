@@ -5,6 +5,35 @@
     <title></title>
   </head>
   <body>
-    Stuff about a movie. 
+<h2>Movie Details</h2>
+      <% count = 0 %>
+      <% movie_details.each do |movie| %>
+        <% if count < 1 %>
+      <p>Title: <%= movie["title"] %></p>
+         <p>Genre: <%= movie["genre"] %></p>
+         <p>Studio: <%= movie["studio"] %></p>
+        <% count += 1 %>
+        <% else %>
+          <% break %>
+        <% end %>
+      <% end %>
+
+<h3>Cast Members</h3>
+    <table>
+      <tr>
+        <th>Actor</th>
+        <th>Role</th>
+      </tr>
+      <% movie_details.each do |movie| %>
+      <tr>
+        <td><%= movie["actor"] %></td>
+        <% if movie["role"] == nil %>
+          <td><%= 'Not Named' %></td>
+        <% else %>
+          <td><%= movie["role"] %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
   </body>
 </html>

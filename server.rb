@@ -32,7 +32,12 @@ def get_movies
   end
 end
 
-def get_movie_details
+def get_movie_details(movie)
+  db_connection do |conn|
+    movie_details = conn.exec_params('SELECT title, genres.name AS "genre", studios.name AS "studio", actors.name AS "actor", cast_members.character AS "role"
+    FROM movies JOIN genres ON movies.genre_id = genres.id JOIN studios ON movies.studio_id = studios.id JOIN cast_members
+    ON movies.id = cast_members.movie_id JOIN actors ON actors.id = cast_members.actor_id WHERE movies.title = ($1)', [movie]).to_a
+  end
 end
 
 get "/movies" do
@@ -40,7 +45,8 @@ get "/movies" do
 end
 
 get "/movies/:id" do
-  erb :'movies/show'
+  movie = params[:id]
+  erb :'movies/show', locals: {movie_details: get_movie_details(movie)}
 end
 
 get "/actors" do
