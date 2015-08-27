@@ -3,6 +3,7 @@ require 'pry'
 require 'shotgun'
 require 'pg'
 
+# Connection to database
 def db_connection
   begin
     connection = PG.connect(dbname: "movies")
