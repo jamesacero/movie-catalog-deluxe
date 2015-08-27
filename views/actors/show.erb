@@ -15,7 +15,7 @@
         <% actor_details.each do |actor_details| %>
         <tr>
           <td><%= actor_details["name"] %></td>
-          <td><a href="/movies/<%= actor_details["title"] %>"/><%= actor_details["title"] %></a></td>
+          <td><a href="/movies/<%= actor_details["movie_id"] %>"/><%= actor_details["title"] %></a></td>
           <td><%= actor_details["character"] %></td>
         </tr>
         <% end %>

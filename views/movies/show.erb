@@ -26,7 +26,7 @@
       </tr>
       <% movie_details.each do |movie| %>
       <tr>
-        <td><a href="/actors/<%= movie["actor"] %>" /> <%= movie["actor"] %></a></td>
+        <td><a href="/actors/<%= movie["actor_id"]%>" /> <%= movie["actor"] %></a></td>
         <% if movie["role"] == nil %>
           <td><%= 'Not Named' %></td>
         <% else %>
