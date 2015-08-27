@@ -14,7 +14,7 @@ end
 
 def get_actors
   db_connection do |conn|
-    actors = conn.exec('SELECT name FROM actors').to_a
+    actors = conn.exec('SELECT name FROM actors ORDER BY name').to_a
   end
 end
 
@@ -28,7 +28,7 @@ end
 def get_movies
   db_connection do |conn|
     movies = conn.exec('SELECT title, year, rating, genres.name AS "genre", studios.name AS "studio" FROM movies JOIN genres ON
-    movies.genre_id = genres.id LEFT OUTER JOIN studios ON movies.studio_id = studios.id').to_a
+    movies.genre_id = genres.id LEFT OUTER JOIN studios ON movies.studio_id = studios.id ORDER BY title').to_a
   end
 end
 
