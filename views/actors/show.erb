@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Actor</th>
+        <th>Movie</th>
+        <th>Role</th>
+      </tr>
+        <% actor_details.each do |actor_details| %>
+        <tr>
+          <td><%= actor_details["name"] %></td>
+          <td><a href="/movies/<%= actor_details["title"] %>"/><%= actor_details["title"] %></a></td>
+          <td><%= actor_details["character"] %></td>
+        </tr>
+        <% end %>
+    </table>
+  </body>
+</html>
